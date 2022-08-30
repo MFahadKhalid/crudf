@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('firms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('number');
+            $table->string('number');
             $table->string('email');
             $table->timestamps();
         });

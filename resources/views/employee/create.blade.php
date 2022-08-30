@@ -70,7 +70,7 @@
                         </div>                    
                         <div class="col-md-12 mt-3">
                             <label for="employee">Employee</label>
-                            <input type="file" class="form-control" name="employee" value="{{old('employee')}}">
+                            <input type="file" class="form-control" style="border:3px groove blue;" name="employee" value="{{old('employee')}}">
                             <small class="text-danger">@error('employee'){{$message}} @enderror</small>
                         </div>
                     <div class="mt-3 col-md-12 mt-3">
