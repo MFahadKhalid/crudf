@@ -28,6 +28,7 @@
                     <th>Department</th>
                     <th>Company</th>
                     <th>Employee</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +42,11 @@
                     <td>{{ $employee->department }}</td>
                     <td>{{ $employee->company }}</td>
                     <td style="width:10%"><img class="rounded img-thumbnail" src="{{asset('upload/employee/'.$employee->employee)}}" alt="" width="100%"></td>
+                    <td>
+                        <a href="{{route('employee.edit', $employee->id)}}" style="text-decoration: none;"><img src="{{asset('assets/img/b_edit.png')}}" alt="b_edit"> Edit</a>
+                        &nbsp;|&nbsp;
+                        <a class="text-danger" href="{{route('employee.delete', $employee->id)}}" style="text-decoration: none;"><img src="{{asset('assets/img/b_drop.png')}}" alt="b_drop"> Delete</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

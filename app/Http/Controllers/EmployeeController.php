@@ -43,10 +43,53 @@ class EmployeeController extends Controller
             'employee' => $employeeName,
         ]);
         if(!empty($store->id)){
-            return redirect()->route('employee.index')->with('success','Department Added');
+            return redirect()->route('employee.index')->with('success','Employee Added');
         }
         else{
             return redirect()->route('employee.create')->with('error','Something Went Wrong');
         }
     }
+    public function edit($id){
+        $companies = Company::get();
+        $departments = Department::get();
+        $employee = Employee::where('id',$id)->first();
+        return view('employee.edit',compact('employee','companies','departments'));
+    }
+
+    public function update(Request $request, $id){
+        $request->validate([ 
+        'name' => 'required|max:191|:employees,name'.$id,
+        'phone' => 'required|max:191|:employees,phone'.$id,
+        'address' => 'required|max:191|:employees,address'.$id,
+        'email' => 'required|max:191|:employees,email'.$id,
+        'department' => 'required|max:191|:employees,department'.$id,
+        'company' => 'required|max:191|:employees,company'.$id,
+    ]);
+    if($request->file('employee')){
+        $employee = $request->file('employee');
+        $employeeName = 'employee' . '-' . time() . '.' . $employee->getClientOriginalExtension();
+        $employee->move('upload/employee/', $employeeName);
+    }
+    $update = employee::where('id',$id)->update([
+        'name' => $request->name,
+        'phone' => $request->phone,
+        'address' => $request->address,
+        'email' => $request->email,
+        'department' => $request->department,
+        'company' => $request->company,
+        'employee' => $employeeName,
+    ]);
+    if($update > 0){
+        return redirect()->route('employee.index')->with('success','employee update');
+    }
+    return redirect()->route('employee.index')->with('error','something went wrong');  
+    }
+    public function delete($id){
+        $employees = Employee::where('id',$id)->first();
+        if(!empty($employees)){
+         $employees->delete();
+         return redirect()->route('employee.index')->with('success','Employee delete');
+        }
+        return redirect()->route('employee.index')->with('error','record not found');
+     }
 }

@@ -44,3 +44,6 @@ Route::get('department/{id}/delete', [DepartmentController::class, 'delete'])->n
 Route::get('employee', [EmployeeController::class , 'index'])->name('employee.index');
 Route::get('employee/create' , [EmployeeController::class , 'create'])->name('employee.create');
 Route::post('employee/store' , [EmployeeController::class , 'store'])->name('employee.store');
+Route::get('employee/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
+Route::post('employee/{id}/update', [EmployeeController::class, 'update'])->name('employee.update');
+Route::get('employee/{id}/delete', [EmployeeController::class, 'delete'])->name('employee.delete');
