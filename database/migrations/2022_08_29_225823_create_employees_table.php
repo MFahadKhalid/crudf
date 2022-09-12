@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('phone');
             $table->text('address');
             $table->string('email');
-            $table->string('department');
-            $table->string('company');
+            $table->string('department_id');
+            $table->string('company_id');
             $table->string('employee');
             $table->timestamps();
         });

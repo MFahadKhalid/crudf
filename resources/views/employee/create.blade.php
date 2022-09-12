@@ -50,20 +50,20 @@
                     </div>
                     <div class="mt-3 col-md-6">
                             <label for="department">Department</label>
-                            <select name="department" class="form-control" style="border:3px groove blue;">
+                            <select name="department_id" class="form-control" style="border:3px groove blue;">
                                 <option value="">Please Select</option>
                                 @foreach($departments as $department)
-                                    <option value="{{ $department->id }}" @if(old("department")) selected @endif>{{ $department->name }}</option>
+                                    <option value="{{ $department->id }}" @if(old("department_id")) selected @endif>{{ $department->name }}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">@error('department'){{$message}} @enderror</small>
                         </div>  
                         <div class="mt-3 col-md-6">
                             <label for="company">Company</label>
-                            <select name="company" class="form-control" style="border:3px groove blue;">
+                            <select name="company_id" class="form-control" style="border:3px groove blue;">
                                 <option value="">Please Select</option>
                                 @foreach($companies as $company)
-                                    <option value="{{ $company->id }}" @if(old("company")) selected @endif>{{ $company->name }}</option>
+                                    <option value="{{ $company->id }}" @if(old("company_id")) selected @endif>{{ $company->name }}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">@error('company'){{$message}} @enderror</small>

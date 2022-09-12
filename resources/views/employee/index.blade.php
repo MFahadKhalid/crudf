@@ -39,8 +39,8 @@
                     <td>{{ $employee->phone }}</td>
                     <td>{{ $employee->address }}</td>
                     <td>{{ $employee->email }}</td>
-                    <td>{{ $employee->department }}</td>
-                    <td>{{ $employee->company }}</td>
+                    <td>{{ $employee->department->name }}</td>
+                    <td>{{ $employee->company->name }}</td>
                     <td style="width:10%"><img class="rounded img-thumbnail" src="{{asset('upload/employee/'.$employee->employee)}}" alt="" width="100%"></td>
                     <td>
                         <a href="{{route('employee.edit', $employee->id)}}" style="text-decoration: none;"><img src="{{asset('assets/img/b_edit.png')}}" alt="b_edit"> Edit</a>
