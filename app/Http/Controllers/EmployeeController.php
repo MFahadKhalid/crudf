@@ -27,6 +27,7 @@ class EmployeeController extends Controller
             'email' => 'required|max:191|unique:employees,email',
             'department_id' => 'required|max:191|:employees,department_id',
             'company_id' => 'required|max:191|:employees,company_id',
+            'employee' => 'required',
         ]);
         if($request->file('employee')){
             $employee = $request->file('employee');
@@ -66,10 +67,14 @@ class EmployeeController extends Controller
         'department_id' => 'required|max:191|:employees,department_id,'.$id,
         'company_id' => 'required|max:191|:employees,company_id,'.$id,
     ]);
+    $employeeData = Employee::where('id',$id)->first();
     if($request->file('employee')){
         $employee = $request->file('employee');
         $employeeName = 'employee' . '-' . time() . '.' . $employee->getClientOriginalExtension();
         $employee->move('upload/employee/', $employeeName);
+    }
+    else{
+        $employeeName = $employeeData->employee;
     }
     $update = employee::where('id',$id)->update([
         'name' => $request->name,

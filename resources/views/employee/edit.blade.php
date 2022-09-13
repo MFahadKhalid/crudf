@@ -53,7 +53,7 @@
                             <select name="department_id" class="form-control" style="border:3px groove blue;">
                                 <option value="">Please Select</option>
                                 @foreach($departments as $department)
-                                    <option value="{{ $department->id }}" @if("department_id") selected @endif>{{ $department->name }}</option>
+                                    <option value="{{ $department->id }}" @if($department->id == $employee->department_id) selected @endif >{{ $department->name }}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">@error('department'){{$message}} @enderror</small>
@@ -63,7 +63,7 @@
                             <select name="company_id" class="form-control" style="border:3px groove blue;">
                                 <option value="">Please Select</option>
                                 @foreach($companies as $company)
-                                    <option value="{{ $company->id }}" @if("company_id") selected @endif>{{ $company->name }}</option>
+                                    <option value="{{ $company->id }}" @if($company->id == $employee->company_id) selected @endif >{{ $company->name }}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">@error('company'){{$message}} @enderror</small>
@@ -72,6 +72,9 @@
                             <label for="employee">Employee</label>
                             <input type="file" class="form-control" style="border:3px groove blue;" name="employee" value="{{$employee->employee}}">
                             <small class="text-danger">@error('employee'){{$message}} @enderror</small>
+                            @if(!empty($employee->employee))
+                                <img src="{{asset('upload/employee/'.$employee->employee)}}" alt="" width="200px" class="img-thumbnail mt-3">
+                            @endif
                         </div>
                     <div class="mt-3 col-md-12 mt-3">
                         <button type="submit" class="btn btn-info btn-block">ADD NEW</button>
