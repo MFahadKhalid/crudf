@@ -39,9 +39,9 @@ class CompanyController extends Controller
 
     public function update(Request $request, $id){
         $request->validate([ 
-        'name' => 'required|max:191|:companies,name'.$id,
-        'number' => 'required|max:191|:companies,number'.$id,
-        'email' => 'required|max:191|:companies,email'.$id,
+        'name' => 'required|max:191|unique:companies,name,'.$id,
+        'number' => 'required|max:191|unique:companies,number,'.$id,
+        'email' => 'required|max:191|unique:companies,email,'.$id,
     ]);
     $update = Company::where('id',$id)->update([
         'name' => $request->name,

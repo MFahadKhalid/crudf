@@ -30,22 +30,22 @@
                 <div class="row">
                     <div class="mt-3 col-md-6">
                         <label>Name</label>
-                        <input type="text" name="name" class="form-control" style="border:3px groove blue;" value="{{$employee->name}}">
+                        <input type="text" name="name" class="form-control" style="border:3px groove blue;" value="{{old('name' , $employee->name)}}">
                         <small class="text-danger">@error('name')  {{$message}} @enderror</small>
                     </div>
                     <div class="mt-3 col-md-6">
                         <label>Phone</label>
-                        <input type="text" name="phone" class="form-control" style="border:3px groove blue;" value="{{$employee->phone}}">
+                        <input type="text" name="phone" class="form-control" style="border:3px groove blue;" value="{{old('phone' , $employee->phone)}}">
                         <small class="text-danger">@error('phone')  {{$message}} @enderror</small>
                     </div>
                     <div class="mt-3 col-md-6">
                         <label>Address</label>
-                        <input type="text" name="address" class="form-control" style="border:3px groove blue;" value="{{$employee->address}}">
+                        <input type="text" name="address" class="form-control" style="border:3px groove blue;" value="{{old('address' , $employee->address)}}">
                         <small class="text-danger">@error('address')  {{$message}} @enderror</small>
                     </div>
                     <div class="mt-3 col-md-6">
                         <label>E-mail</label>
-                        <input type="text" name="email" class="form-control" style="border:3px groove blue;" value="{{$employee->email}}">
+                        <input type="text" name="email" class="form-control" style="border:3px groove blue;" value="{{old('email' , $employee->email)}}">
                         <small class="text-danger">@error('email')  {{$message}} @enderror</small>
                     </div>
                     <div class="mt-3 col-md-6">
@@ -70,7 +70,7 @@
                         </div>                    
                         <div class="col-md-12 mt-3">
                             <label for="employee">Employee</label>
-                            <input type="file" class="form-control" style="border:3px groove blue;" name="employee" value="{{$employee->employee}}">
+                            <input type="file" class="form-control" style="border:3px groove blue;" name="employee">
                             <small class="text-danger">@error('employee'){{$message}} @enderror</small>
                             @if(!empty($employee->employee))
                                 <img src="{{asset('upload/employee/'.$employee->employee)}}" alt="" width="200px" class="img-thumbnail mt-3">

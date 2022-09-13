@@ -30,17 +30,17 @@
                 <div class="row">
                     <div class="mt-3 col-md-12">
                         <label>Name</label>
-                        <input type="text" name="name" class="form-control" style="border:3px groove green;" value="{{$department->name}}">
+                        <input type="text" name="name" class="form-control" style="border:3px groove green;" value="{{old('name' , $department->name)}}">
                         <small class="text-danger">@error('name')  {{$message}} @enderror</small>
                     </div>
                     <div class="mt-3 col-md-12">
                         <label>E-mail</label>
-                        <input type="text" name="email" class="form-control" style="border:3px groove green;" value="{{$department->email}}">
+                        <input type="text" name="email" class="form-control" style="border:3px groove green;" value="{{old('email' , $department->email)}}">
                         <small class="text-danger">@error('email')  {{$message}} @enderror</small>
                     </div>
                     <div class="mt-3 col-md-12">
                         <label>Address</label>
-                        <input type="text" name="address" class="form-control" style="border:3px groove green;" value="{{$department->address}}">
+                        <input type="text" name="address" class="form-control" style="border:3px groove green;" value="{{old('address' , $department->address)}}">
                         <small class="text-danger">@error('address')  {{$message}} @enderror</small>
                     </div>
                     <div class="mt-3 col-md-12 mt-3">

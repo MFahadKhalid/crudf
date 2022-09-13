@@ -39,9 +39,9 @@ class DepartmentController extends Controller
 
     public function update(Request $request, $id){
         $request->validate([ 
-        'name' => 'required|max:191|:departments,name'.$id,
-        'email' => 'required|max:191|:departments,email'.$id,
-        'address' => 'required|max:191|:departments,address'.$id,
+        'name' => 'required|max:191|unique:departments,name,'.$id,
+        'email' => 'required|max:191|unique:departments,email,'.$id,
+        'address' => 'required|max:191|unique:departments,address,'.$id,
     ]);
     $update = Department::where('id',$id)->update([
         'name' => $request->name,
